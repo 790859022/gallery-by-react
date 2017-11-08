@@ -40,6 +40,7 @@ html, body {
   width: 100%;
   height: 100%;
   position: relative;
+  perspective: 1800px;
 }
 
 .img-sec {
@@ -51,13 +52,32 @@ html, body {
 }
 
 .img-sec .img-figure {
+  cursor: pointer;
   position: absolute;
   width: 320px;
   height: 360px;
   padding: 40px;
-  margin:0;
+  margin: 0;
   box-sizing: border-box;
   background: #fff;
+  transform-style: preserve-3d;
+  transition: all .6s ease-in-out;
+  transform-origin: 0 50% 0;
+
+}
+
+.img-sec .img-figure.is-inverse {
+  transform: translateX(100%) rotateY(180deg);
+
+}
+
+.img-sec .img-figure.is-inverse .img-desc {
+  /*z-index:10;*/
+}
+
+.img-sec .img-figure img {
+  position: relative;
+  z-index: 1;
 }
 
 .img-sec .img-title {
@@ -65,6 +85,24 @@ html, body {
   margin-top: 20px;
   color: #bbb;
   font-size: 16px;
+}
+
+.img-sec .img-desc {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #fff;
+  color: #999;
+  backface-visibility: hidden;
+  transform: rotateY(180deg) translateZ(1px);
+  /*transform:rotateY(180deg)*/
 }
 
 .controller-nav {
@@ -76,6 +114,60 @@ html, body {
   text-align: center;
 }
 
+.controller-unit {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  text-align: center;
+  cursor: pointer;
+  background: #aaa;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-transform: scale(.5);
+  -moz-transform: scale(.5);
+  -ms-transform: scale(.5);
+  -o-transform: scale(.5);
+  transform: scale(.5);
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+  vertical-align:middle;
+
+}
+
+.controller-unit.is-center {
+  background: #888;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+
+}
+.controller-unit.is-inverse{
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.controller-unit.is-center::after{
+  color: #fff;
+  font-family:'iconfont';
+  content:'\e6b7';
+  line-height:30px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 
-
+@font-face {font-family: "iconfont";
+  src: url('../fonts/icons/iconfont.eot'); /* IE9*/
+  src: url('../fonts/icons/iconfont.eot') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/icons/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/icons/iconfont.svg') format('svg'); /* iOS 4.1- */
+}

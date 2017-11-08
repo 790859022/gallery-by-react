@@ -27,6 +27,7 @@ function getDefaultModules() {
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader!autoprefixer-loader'
+        // loader: ['style-loader','css-loader','post-loader']
       },
       {
         test: /\.sass/,
@@ -53,7 +54,7 @@ function getDefaultModules() {
         loader: 'file-loader'
       },
       {
-        test: /\.(woff|woff2|eot|fft|otf)$/,
+        test: /\.(woff|woff2|eot|fft|otf|ttf)$/,
         loader: 'file-loader'
       },
       {
